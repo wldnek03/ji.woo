@@ -29,11 +29,11 @@ jobs:
         env:
           NODE_ENV: production
         run: |
-          npm run build  # Angular 빌드 실행
+          npm run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist/Angular-demo
+          path: ./dist/angular-demo  # outputPath에 맞춘 경로
 
   deploy:
     environment:
