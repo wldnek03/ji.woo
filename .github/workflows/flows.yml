@@ -29,11 +29,11 @@ jobs:
         env:
           NODE_ENV: production
         run: |
-          npm run build
+          npm run build  # Angular 빌드 실행
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./build  # React의 경우 기본적으로 build 폴더가 생성됩니다.
+          path: ./dist/Angular-demo
 
   deploy:
     environment:
