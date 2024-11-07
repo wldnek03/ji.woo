@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { faSearch, faUser } from '@fortawesome/free-solid-svg-icons';
-import {URLService} from '../../../util/movie/URL';
-import {BannerComponent} from '../../../views/home-main/banner.component';
-import {MovieRowComponent} from '../../../views/home-main/movie-row.component';
+import { URLService } from '../../../util/movie/URL';
+import { BannerComponent } from '../../../views/home-main/banner.component';
+import { MovieRowComponent } from '../../../views/home-main/movie-row.component';
 
 @Component({
   selector: 'app-home',
@@ -23,7 +23,10 @@ export class HomeMainComponent implements OnInit, OnDestroy {
   featuredMovie: any = null;
   popularMoviesUrl: string = '';
   newReleasesUrl: string = '';
-  actionMoviesUrl: string = '';
+  
+  topRatedMoviesUrl: string = ''; 
+  actionMoviesUrl: string = ''; 
+  comedyMoviesUrl: string = ''; // 코미디 영화 URL 속성 추가
 
   private scrollListener: any;
 
@@ -32,7 +35,9 @@ export class HomeMainComponent implements OnInit, OnDestroy {
   ) {
     this.popularMoviesUrl = urlService.getURL4PopularMovies(this.apiKey);
     this.newReleasesUrl = urlService.getURL4ReleaseMovies(this.apiKey);
-    this.actionMoviesUrl = urlService.getURL4GenreMovies(this.apiKey, '28');
+    this.topRatedMoviesUrl = urlService.getURL4TopRatedMovies(this.apiKey); 
+    this.actionMoviesUrl = urlService.getURL4GenreMovies(this.apiKey, '28'); // 액션 영화
+    this.comedyMoviesUrl = urlService.getURL4GenreMovies(this.apiKey, '35'); // 코미디 영화
   }
 
   ngOnInit() {
